@@ -2,7 +2,7 @@
 	<div class="box box-primary">
 		<div class="box-body">
 			<div class="row">
-			<form name="user" action="<?php echo base_url().'user/save_user';?>" method="POST" enctype="multipart/form-data">
+			<form name="user" action="<?php echo base_url().'user/save_user';?>" method="POST" enctype="multipart/form-data" onsubmit="return chk_password()">
 				<div class="col-md-12">
 					<div class="col-md-12">
 						<?php $this->load->view('personal_info'); ?>
@@ -109,5 +109,14 @@
 			    }
 			});	
 		}		
+	}
+
+	function chk_password() {
+		var password=$('#password').val();
+		var cfpassword=$('#cfpassword').val();
+		if(password!=cfpassword) {
+			alert('Password not matched');
+			return false;
+		}
 	}
 </script>

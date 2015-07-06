@@ -73,6 +73,13 @@ class user extends CI_Controller {
 			}			
 		}
 		else {
+			$password = $this->input->post('password');
+			$cfpassword = $this->input->post('cfpassword');
+			if($password!=$cfpassword) {
+				set_message('Password not matched!');
+				redirect_back();
+				die;
+			}
 			$people_id=$this->people_model->add_new_people();
 			if($people_id) {
 				$companyid = $this->input->post('companyid');
